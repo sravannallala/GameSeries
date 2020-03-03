@@ -25,11 +25,7 @@ class ViewController: UIViewController {
         service.getAllPlayerNameFrom(endpoint:"all")
         service.completionHandler { [weak, self](palyers, status , message } in
         
-        if status {
-            gaurd  let self = self  else {return}
-            
-            
-        }
+       
     }
 
    
