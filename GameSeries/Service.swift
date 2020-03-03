@@ -14,6 +14,9 @@ class Service{
 //    https://www.amiiboapi.com/api/amiibo
     fileprivate var gameUrl = ""
     
+    typealias playersCallBack = (_ players: [Player]? ,_ status: Bool ,_ message: String) -> Void
+    var callBack :playersCallBack?
+    
     init(gameUrl:String) {
         self.gameUrl = gameUrl
     }
@@ -24,10 +27,17 @@ class Service{
             guard let data = responseData.data else {return}
             do{
                 let players = try JSONDecoder().decode(Amiibo.self, from: data)
-                print("players == \(players)")
+                
+                self.callBack?(players, true ," ")
+//                print("players == \(players)")
             } catch {
-                print("Error decoding == \(error)")
+//                print("Error decoding == \(error)")
+                self.callBack?(nil,false,error.localizedDescription)
             }
         }
+    }
+    
+    func completionHandler (callBack: @escaping playersCallBack){
+        self.callBack = callBack
     }
 }
