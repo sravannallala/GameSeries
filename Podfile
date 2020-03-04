@@ -7,4 +7,5 @@ target 'GameSeries' do
 
   # Pods for GameSeries
 pod 'Alamofire', '~> 5.0'
+pod 'SDWebImage'
 end

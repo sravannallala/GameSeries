@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "EpitaLogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "EpitaLogo.png",
       "scale" : "2x"
     },
     {

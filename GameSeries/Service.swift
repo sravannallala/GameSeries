@@ -14,7 +14,7 @@ class Service{
 //    https://www.amiiboapi.com/api/amiibo
     fileprivate var gameUrl = ""
     
-    typealias playersCallBack = (_ players: [Player]? ,_ status: Bool ,_ message: String) -> Void
+    typealias playersCallBack = (_ players: Amiibo? ,_ status: Bool ,_ message: String) -> Void
     var callBack :playersCallBack?
     
     init(gameUrl:String) {
@@ -24,11 +24,13 @@ class Service{
     func getAllPlayerNameFrom(endpoint:String)  {
         AF.request(self.gameUrl ,   method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).response {
             (responseData) in
-            guard let data = responseData.data else {return}
+            guard let data = responseData.data else {
+                self.callBack?(nil,false,"")
+                return}
             do{
                 let players = try JSONDecoder().decode(Amiibo.self, from: data)
                 
-                self.callBack?(players, true ," ")
+                self.callBack?( players, true ," ")
 //                print("players == \(players)")
             } catch {
 //                print("Error decoding == \(error)")

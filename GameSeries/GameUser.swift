@@ -14,11 +14,18 @@ struct Player: Decodable {
     var name : String?
     var gameSeries : String?
     var head : String?
+    var image : String?
+    var character : String?
+    var amiiboSeries:String?
+    
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
         case gameSeries = "gameSeries"
         case head = "head"
+        case image = "image"
+        case character = "character"
+        case amiiboSeries = "amiiboSeries"
     }
 }
 
