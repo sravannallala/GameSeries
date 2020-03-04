@@ -33,7 +33,7 @@ class Service{
                 self.callBack?( players, true ," ")
 //                print("players == \(players)")
             } catch {
-//                print("Error decoding == \(error)") testing
+//                print("Error decoding == \(error)")
                 self.callBack?(nil,false,error.localizedDescription)
             }
         }
